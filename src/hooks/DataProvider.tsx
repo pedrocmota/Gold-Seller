@@ -19,7 +19,7 @@ export const DataProvider: React.FC = (props) => {
   const loadData = useCallback(() => {
     const fetch = async () => {
       const api = axios.create({
-        baseURL: 'http://3.17.143.92'
+        baseURL: 'http://3.17.143.92/'
       })
       const response = await api.get('/')
       const info = response.data as any
