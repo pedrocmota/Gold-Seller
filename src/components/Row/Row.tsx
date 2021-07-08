@@ -1,4 +1,5 @@
 import React from 'react'
+import './styles.css'
 
 interface IRow {
   item: string,
@@ -10,22 +11,21 @@ interface IRow {
 const Row: React.FunctionComponent<IRow> = (props) => {
   return (
     <div className="row">
-      <div className="titleDiv">
-        <h1>{props.item}</h1>
+      <div className="header">
+        <h3>{props.item}</h3>
       </div>
-      <div className="rowBoxes">
-        <div className="box">
-          <h2>Menor Preço:</h2>
-          <b>{props.menorPreco}g</b>
+      <div className="body">
+        <div className="body-children">
+          <h2>Preço atual:</h2>
+          <div>{props.menorPreco}</div>
         </div>
-        <div className="box">
-          <h2>Preço Mercado: </h2>
-          <b>{props.precoMercado}g</b>
+        <div className="body-children">
+          <h2>Preço médio:</h2>
+          <div>{props.precoMercado}</div>
         </div>
-        <div className="box">
-          <h2>Quantidade: </h2>
-          <b>{props.quantidade} unidades</b>
-        </div>
+      </div>
+      <div className="footer">
+        <h2>Quantidade: <b>{props.quantidade}</b></h2>
       </div>
     </div>
   )

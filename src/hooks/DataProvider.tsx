@@ -4,6 +4,7 @@ import {serverData} from '../type/Data'
 
 interface IDataContext {
   data: serverData | undefined,
+  setData: React.Dispatch<React.SetStateAction<serverData | undefined>>,
   server: string,
   setServer: React.Dispatch<React.SetStateAction<string>>,
   loadData: () => void
@@ -19,7 +20,7 @@ export const DataProvider: React.FC = (props) => {
   const loadData = useCallback(() => {
     const fetch = async () => {
       const api = axios.create({
-        baseURL: 'http://3.17.143.92/'
+        baseURL: 'http://3.17.143.92/api'
       })
       const response = await api.get('/')
       const info = response.data as any
@@ -29,7 +30,7 @@ export const DataProvider: React.FC = (props) => {
     fetch()
   }, [])
   return (
-    <DataContext.Provider value={{data, server, setServer, loadData}}>
+    <DataContext.Provider value={{data, setData, server, setServer, loadData}}>
       {props.children}
     </DataContext.Provider>
   )
